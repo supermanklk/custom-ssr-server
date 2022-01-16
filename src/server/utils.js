@@ -2,20 +2,13 @@ import React from "react";
 import { StaticRouter } from "react-router-dom/server";
 import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
 import Routes from "../Routes";
+import getStore from "../store";
 
 const render = (req) => {
-  //  location={req.path} 这个是必须的，原因是服务器端无法感觉浏览器的地址，所以需要获取地址
-
-  const reducer = (state = { name: "faith" }, action) => {
-    return state;
-  };
-
-  const store = createStore(reducer, applyMiddleware(thunk));
   const content = renderToString(
-    <Provider store={store}>
+    <Provider store={getStore()}>
+      {/*location={req.path} 这个是必须的，原因是服务器端无法感觉浏览器的地址，所以需要获取地址*/}
       <StaticRouter location={req.path} context={{}}>
         {Routes}
       </StaticRouter>
