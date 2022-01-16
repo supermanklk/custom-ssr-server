@@ -13,7 +13,7 @@ import Routes from "../Routes";
 // static 是中间件
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   //  location={req.path} 这个是必须的，原因是服务器端无法感觉浏览器的地址，所以需要获取地址
   const content = renderToString(
     <StaticRouter location={req.path} context={{}}>
