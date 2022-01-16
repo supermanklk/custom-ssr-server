@@ -19,7 +19,8 @@ app.get("/", (req, res) => {
       <head></head>
       <body>
         <h1>ssr</h1>
-        ${content}
+        <!--不要出现空格-->
+        <div id='root'>${content}</div> 
         <script src='./index.js'></script>
       </body>
     </html>
