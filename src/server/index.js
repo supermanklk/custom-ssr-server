@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 import { render } from "./utils";
+
 const port = 3000;
 
 // express的中间件， public是根目录下的
