@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-import Home from "./containers/Home/index";
 import React from "react";
 import { renderToString } from "react-dom/server";
+
+import Home from "../containers/Home/index";
 
 const content = renderToString(<Home />);
 

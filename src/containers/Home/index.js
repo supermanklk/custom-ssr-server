@@ -8,7 +8,7 @@ const Home = () => {
           alert("click");
         }}
       >
-        click
+        click here
       </button>
     </div>
   );

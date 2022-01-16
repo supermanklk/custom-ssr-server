@@ -26,7 +26,7 @@ eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/i
   \**************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar Home = function Home() {\n  return React.createElement(\n    \"div\",\n    null,\n    React.createElement(\n      \"div\",\n      null,\n      \"welcome to my home!!\"\n    ),\n    React.createElement(\n      \"button\",\n      {\n        onClick: function onClick() {\n          alert(\"click\");\n        }\n      },\n      \"click\"\n    )\n  );\n};\nexports[\"default\"] = Home;\n\n//# sourceURL=webpack://server/./src/containers/Home/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar Home = function Home() {\n  return React.createElement(\n    \"div\",\n    null,\n    React.createElement(\n      \"div\",\n      null,\n      \"welcome to my home!!\"\n    ),\n    React.createElement(\n      \"button\",\n      {\n        onClick: function onClick() {\n          alert(\"click\");\n        }\n      },\n      \"click here\"\n    )\n  );\n};\nexports[\"default\"] = Home;\n\n//# sourceURL=webpack://server/./src/containers/Home/index.js?");
 
 /***/ }),
 
