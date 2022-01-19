@@ -1,5 +1,3 @@
-import clientAxios from "../../../client/request";
-import serverAxios from "../../../server/request";
 import { CHANGE_LIST } from "./contants";
 
 const changeList = (list) => ({
@@ -8,10 +6,10 @@ const changeList = (list) => ({
 });
 
 export const getHomeList = (server) => {
-  const request = server ? serverAxios : clientAxios;
-  return (dispatch) => {
+  // axiosInstance 是通过 react-thunk 的  whit
+  return (dispatch, getState, axiosInstance) => {
     // axios.post 返回的是promise
-    return request
+    return axiosInstance
       .post(
         "/question/getQuestionList",
         {
