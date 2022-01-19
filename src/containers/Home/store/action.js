@@ -8,7 +8,8 @@ const changeList = (list) => ({
 
 export const getHomeList = () => {
   return (dispatch) => {
-    axios
+    // axios.post 返回的是promise
+    return axios
       .post(
         "https://kj.supermanklk.cn/question/getQuestionList",
         {
@@ -24,7 +25,6 @@ export const getHomeList = () => {
       .then((res) => {
         const list = res.data.results;
         dispatch(changeList(list));
-        console.log(res);
       });
   };
 };

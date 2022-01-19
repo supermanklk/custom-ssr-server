@@ -11,7 +11,8 @@ const port = 3000;
 app.use(express.static("public"));
 
 app.get("*", (req, res) => {
-  res.send(render(req));
+  // res.send(render(req, res));
+  render(req, res);
 });
 
 app.listen(port, () => {

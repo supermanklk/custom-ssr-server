@@ -16,7 +16,7 @@ const Home = (props) => {
       {props.newLists &&
         props.newLists.map((item) => {
           return (
-            <div>
+            <div key={item.id}>
               {item.id} : {item.issue}
             </div>
           );
@@ -32,6 +32,15 @@ const Home = (props) => {
       </button>
     </div>
   );
+};
+
+// 服务器数据渲染
+// 这个函数,负责在服务器端渲染之前,把这个路由需要的数据提前加载好
+Home.loadData = (store) => {
+  // ssr首次渲染页面会匹配渲染的页面路由，如果命中就加载对应组件的数据
+  // getHomeList() 返回的是 promise
+  // 所以 store.dispatch 返回的也是promise,它对应的就是 axios.post返回的promise
+  return store.dispatch(getHomeList());
 };
 
 const mapStateToProps = (state) => ({
