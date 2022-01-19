@@ -30,7 +30,13 @@ const render = (store, routes, req) => {
       <head></head>
       <body>
         <h1>ssr</h1>
-        <div id='root'>${content}</div> 
+        <div id='root'>${content}</div>
+        <!--数据注水 -->
+        <script>
+          window.context = {
+            state: ${JSON.stringify(store.getState())}
+          }
+        </script>
         <script src='./index.js'></script>
       </body>
     </html>

@@ -13,7 +13,13 @@ const reducer = combineReducers({
 // const store = createStore(reducer, applyMiddleware(thunk));
 // export default store
 
-const getStore = () => {
+export const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk));
 };
-export default getStore;
+
+export const getClientStore = () => {
+  // 数据脱水
+  // 我们把存储在window上的数据直接拿来用
+  const defaultStore = window.context.state;
+  return createStore(reducer, defaultStore, applyMiddleware(thunk));
+};

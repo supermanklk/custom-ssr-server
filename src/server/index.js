@@ -1,4 +1,4 @@
-import getStore from "../store";
+import { getStore } from "../store";
 const express = require("express");
 const app = express();
 import { render } from "./utils";

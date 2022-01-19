@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import routes from "../Routes";
-import getStore from "../store";
+import { getClientStore } from "../store";
 
 const routerRender = (routes) => {
   return routes.map((item, index) => {
@@ -17,7 +17,7 @@ const routerRender = (routes) => {
 
 const App = () => {
   return (
-    <Provider store={getStore()}>
+    <Provider store={getClientStore()}>
       <BrowserRouter>
         {/*{Routes}*/}
         <Routes>
