@@ -6,13 +6,15 @@ const changeList = (list) => ({
   list,
 });
 
-export const getHomeList = () => {
+export const getHomeList = (server) => {
   return (dispatch) => {
     // axios.post 返回的是promise
     return axios
       .post(
         // "https://kj.supermanklk.cn/question/getQuestionList",
-        "api2/question/getQuestionList",
+        server
+          ? "https://kj.supermanklk.cn/question/getQuestionList"
+          : "question/getQuestionList",
         {
           type: "lightspot",
         },

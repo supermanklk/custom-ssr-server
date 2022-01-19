@@ -19,10 +19,10 @@ app.use(express.static("public"));
 // https://kj.supermanklk.cn + proxyReqPathResolver()
 // https://kj.supermanklk.cn + /question/getQuestionList
 app.use(
-  "/api2",
+  "/question",
   proxy("https://kj.supermanklk.cn", {
     proxyReqPathResolver: function (req) {
-      return req.url;
+      return "/question" + req.url;
     },
   })
 );
@@ -36,9 +36,9 @@ app.get("*", (req, res) => {
       promises.push(item.route.loadData(store));
     }
   });
-  // Promise.all(promises).then(() => {
-  res.send(render(store, routes, req));
-  // });
+  Promise.all(promises).then(() => {
+    res.send(render(store, routes, req));
+  });
 });
 
 // app.get("*", (req, res) => {
