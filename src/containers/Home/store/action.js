@@ -1,4 +1,5 @@
-import axios from "axios";
+import clientAxios from "../../../client/request";
+import serverAxios from "../../../server/request";
 import { CHANGE_LIST } from "./contants";
 
 const changeList = (list) => ({
@@ -7,14 +8,12 @@ const changeList = (list) => ({
 });
 
 export const getHomeList = (server) => {
+  const request = server ? serverAxios : clientAxios;
   return (dispatch) => {
     // axios.post 返回的是promise
-    return axios
+    return request
       .post(
-        // "https://kj.supermanklk.cn/question/getQuestionList",
-        server
-          ? "https://kj.supermanklk.cn/question/getQuestionList"
-          : "question/getQuestionList",
+        "/question/getQuestionList",
         {
           type: "lightspot",
         },
