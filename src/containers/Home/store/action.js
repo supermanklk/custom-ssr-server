@@ -11,7 +11,8 @@ export const getHomeList = () => {
     // axios.post 返回的是promise
     return axios
       .post(
-        "https://kj.supermanklk.cn/question/getQuestionList",
+        // "https://kj.supermanklk.cn/question/getQuestionList",
+        "api2/question/getQuestionList",
         {
           type: "lightspot",
         },
