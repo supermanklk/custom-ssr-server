@@ -11,6 +11,9 @@ const createInstance = (req) =>
     headers: {
       cookie: req.get("cookie") || "",
     },
+    params: {
+      secret: "faith",
+    },
   });
 
 export default createInstance;
