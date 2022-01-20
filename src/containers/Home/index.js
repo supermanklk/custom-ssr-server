@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Header from "../../components/Header";
 import { getHomeList } from "./store/action";
 const Home = (props) => {
   useEffect(() => {
@@ -9,7 +8,6 @@ const Home = (props) => {
 
   return (
     <div>
-      <Header />
       <div style={{ color: "blue" }}>welcome to my home!! </div>
       <div>redux 获取的数据 name: {props.name}</div>
       ========================================================================

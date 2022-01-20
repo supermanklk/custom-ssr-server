@@ -17,10 +17,10 @@ const reducer = combineReducers({
 // export default store
 
 //改变服务器端store的内容,那么就一定要使用serverAxios
-export const getStore = () => {
+export const getStore = (req) => {
   return createStore(
     reducer,
-    applyMiddleware(thunk.withExtraArgument(serverAxios))
+    applyMiddleware(thunk.withExtraArgument(serverAxios(req)))
   );
 };
 

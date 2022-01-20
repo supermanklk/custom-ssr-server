@@ -28,7 +28,7 @@ app.use(
 );
 
 app.get("*", (req, res) => {
-  const store = getStore();
+  const store = getStore(req);
   const matchedRoutes = matchRoutes(routes, req.path);
   const promises = [];
   matchedRoutes.forEach((item) => {
@@ -36,6 +36,8 @@ app.get("*", (req, res) => {
       promises.push(item.route.loadData(store));
     }
   });
+
+  console.log("faith=============promises", promises);
   Promise.all(promises).then(() => {
     res.send(render(store, routes, req));
   });
