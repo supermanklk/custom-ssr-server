@@ -4,6 +4,7 @@ import Home from "./containers/Home/index";
 import JKSister from "./containers/Tang/index";
 import IntroduceMe from "./containers/IntroduceMe/index";
 import Header from "./components/Header/index";
+import NotFound from "./containers/NotFound";
 
 export default [
   {
@@ -15,7 +16,7 @@ export default [
         <Outlet />
       </div>
     ),
-    exact: true, // 精确匹配
+    exact: false, // 精确匹配
 
     children: [
       {
@@ -32,6 +33,10 @@ export default [
         exact: true, // 精确匹配
         loadData: Home.loadData, // 如果有 Home.loadData 说明是ssr时候要展示组件的数据
         // loadData: Home.loadData,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
