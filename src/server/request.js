@@ -1,5 +1,7 @@
 import axios from "axios";
+import config from "../config";
 
+const { year } = config;
 // const instance = axios.create({
 //   baseURL: "https://kj.supermanklk.cn",
 // });
@@ -13,6 +15,7 @@ const createInstance = (req) =>
     },
     params: {
       secret: "faith",
+      year,
     },
   });
 
