@@ -3,6 +3,7 @@ import { StaticRouter } from "react-router-dom/server";
 import { Routes, Route } from "react-router-dom";
 import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
+import HttpContext from "./httpContext";
 
 const render = (store, routes, req) => {
   // store 有2个方法， dispatch与getState
@@ -16,12 +17,16 @@ const render = (store, routes, req) => {
     });
   };
 
+  const context = { name: "faith" };
+
   const content = renderToString(
     <Provider store={store}>
       {/*location={req.path} 这个是必须的，原因是服务器端无法感觉浏览器的地址，所以需要获取地址*/}
-      <StaticRouter location={req.path} context={{}}>
-        <Routes>{routerRender(routes)}</Routes>
-      </StaticRouter>
+      <HttpContext.Provider value={context}>
+        <StaticRouter location={req.path}>
+          <Routes>{routerRender(routes)}</Routes>
+        </StaticRouter>
+      </HttpContext.Provider>
     </Provider>
   );
 
