@@ -16,21 +16,17 @@ export default [
         <Outlet />
       </div>
     ),
-    exact: false, // 精确匹配
-
     children: [
       {
         key: "ttt",
         path: "/ttt",
         element: <IntroduceMe />,
-        exact: true, // 精确匹配
         // loadData: Home.loadData,
       },
       {
         key: "main",
         path: "/",
         element: <Home />,
-        exact: true, // 精确匹配
         loadData: Home.loadData, // 如果有 Home.loadData 说明是ssr时候要展示组件的数据
         // loadData: Home.loadData,
       },
@@ -40,11 +36,11 @@ export default [
       },
     ],
   },
+
   {
     key: "jk",
     path: "/jk",
     element: <JKSister />,
-    exact: true, // 精确匹配
     // loadData: Home.loadData,
   },
 ];
