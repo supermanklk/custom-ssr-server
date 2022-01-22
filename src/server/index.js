@@ -37,7 +37,17 @@ app.get("*", (req, res) => {
     }
   });
   Promise.all(promises).then(() => {
-    res.send(render(store, routes, req));
+    const context = {};
+    // 渲染之前传入context，如果判断组件是404组件，组件内部会改变context context.staticContext.NotFound = true;
+    const html = render(store, routes, req, context);
+    // 此刻html拿到的context就有可能是404组件改变过的context，通过这个来判断返回的状态码
+    if (context.NotFound) {
+      //  404页面
+      res.status(404);
+      res.send(html);
+    } else {
+      res.send(html);
+    }
   });
 });
 
