@@ -30,7 +30,7 @@ const render = (store, routes, req, context) => {
     </Provider>
   );
   // 服务器渲染css，实现的原理类似与数据的注水与脱水
-  const cssStr = context.css ? context.css : "";
+  const cssStr = context.css.length ? context.css.join("\n") : "";
 
   return `
     <html>

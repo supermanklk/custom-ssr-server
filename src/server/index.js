@@ -37,7 +37,7 @@ app.get("*", (req, res) => {
     }
   });
   Promise.all(promises).then(() => {
-    const context = {};
+    const context = { css: [] };
     // 渲染之前传入context，如果判断组件是404组件，组件内部会改变context context.staticContext.NotFound = true;
     const html = render(store, routes, req, context);
     console.log("faith=============context", context);

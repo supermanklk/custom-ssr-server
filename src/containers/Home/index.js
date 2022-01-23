@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getHomeList } from "./store/action";
 import styles from "./index.css";
 import { isBrowser } from "../../utils";
+import ImgList from "./components/ImgList";
 const Home = (props) => {
   let context = useContext(HttpContext);
 
@@ -16,7 +17,7 @@ const Home = (props) => {
     // 拿到在 server/utils内定义的context （src/server/utils.js）
     // 主要是做 404 页面
     console.log("faith=============", styles);
-    context.staticContext.css = styles._getCss();
+    context.staticContext.css.push(styles._getCss());
   }
 
   return (
@@ -41,6 +42,7 @@ const Home = (props) => {
       >
         click here
       </button>
+      <ImgList />
     </div>
   );
 };
