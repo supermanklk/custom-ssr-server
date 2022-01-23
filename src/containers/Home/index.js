@@ -1,15 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import HttpContext from "../../server/httpContext";
 import { connect } from "react-redux";
 import { getHomeList } from "./store/action";
+import styles from "./index.css";
+import { isBrowser } from "../../utils";
 const Home = (props) => {
+  let context = useContext(HttpContext);
+
   useEffect(() => {
     props.getHomeLIst();
   }, []);
 
+  // 这段代码只在ssr上执行
+  if (!isBrowser()) {
+    // 拿到在 server/utils内定义的context （src/server/utils.js）
+    // 主要是做 404 页面
+    console.log("faith=============", styles);
+    context.staticContext.css = styles._getCss();
+  }
+
   return (
     <div>
       <div style={{ color: "blue" }}>welcome to my home!! </div>
-      <div>redux 获取的数据 name: {props.name}</div>
+      <div className={styles.test}>redux 获取的数据 name: {props.name}</div>
       ========================================================================
       {props.newLists &&
         props.newLists.map((item) => {
@@ -44,6 +57,7 @@ Home.loadData = (store) => {
 const mapStateToProps = (state) => ({
   name: state.home.name,
   newLists: state.home.newLists,
+  zhangbin: state,
 });
 
 const mapDispatchToProps = (dispatch) => ({

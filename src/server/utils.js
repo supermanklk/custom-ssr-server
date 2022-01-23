@@ -29,10 +29,14 @@ const render = (store, routes, req, context) => {
       </HttpContext.Provider>
     </Provider>
   );
+  // 服务器渲染css，实现的原理类似与数据的注水与脱水
+  const cssStr = context.css ? context.css : "";
 
   return `
     <html>
-      <head></head>
+      <head>
+      <style>${cssStr}</style> 
+      </head>
       <body>
         <h1>ssr</h1>
         <div id='root'>${content}</div>
