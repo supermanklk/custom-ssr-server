@@ -35,6 +35,8 @@ const render = (store, routes, req, context) => {
   return `
     <html>
       <head>
+      <title>怪我过分执迷</title>
+      <meta name="description" content="全球领先的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过千亿的中文网页数据库，可以瞬间找到相关的搜索结果。">
       <style>${cssStr}</style> 
       </head>
       <body>
