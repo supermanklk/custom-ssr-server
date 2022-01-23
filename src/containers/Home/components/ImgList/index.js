@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./index.css";
-import HttpContext from "../../../../server/httpContext";
-import { isBrowser } from "../../../../utils";
+import useWithStyle from "../../../../HocComponent/useWithStyle";
 
 // 这个组件主要验证ssr渲染时候css相互污染的问题
 // 关联代码  src/server/utils.js
@@ -9,14 +8,8 @@ import { isBrowser } from "../../../../utils";
 // const cssStr = context.css.length ? context.css.join("\n") : "";
 
 const ImgList = ({}) => {
-  let context = useContext(HttpContext);
-  // 这段代码只在ssr上执行
-  if (!isBrowser()) {
-    // 拿到在 server/utils内定义的context （src/server/utils.js）
-    // 主要是做 404 页面
-    console.log("faith=============", styles);
-    context.staticContext.css.push(styles._getCss());
-  }
+  // 这句话代表该组件支持ssr的css渲染
+  styles && useWithStyle({ styles });
 
   return <div className={styles.colorBlue}>ImgList</div>;
 };

@@ -1,24 +1,16 @@
 import React, { useEffect, useContext } from "react";
-import HttpContext from "../../server/httpContext";
 import { connect } from "react-redux";
 import { getHomeList } from "./store/action";
 import styles from "./index.css";
-import { isBrowser } from "../../utils";
 import ImgList from "./components/ImgList";
+import useWithStyle from "../../HocComponent/useWithStyle";
 const Home = (props) => {
-  let context = useContext(HttpContext);
-
   useEffect(() => {
     props.getHomeLIst();
   }, []);
 
-  // 这段代码只在ssr上执行
-  if (!isBrowser()) {
-    // 拿到在 server/utils内定义的context （src/server/utils.js）
-    // 主要是做 404 页面
-    console.log("faith=============", styles);
-    context.staticContext.css.push(styles._getCss());
-  }
+  // 这句话代表该组件支持ssr的css渲染
+  styles && useWithStyle({ styles });
 
   return (
     <div>
